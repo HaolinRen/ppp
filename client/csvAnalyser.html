@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>CSV Analyser</title>
+        <link rel="stylesheet" type="text/css" href="style/semantic.min.css">
+        <link rel="stylesheet" type="text/css" href="style/csvAna.css">
+    </head>
+    <body>
+        <div class="ui sidebar vertical menu">
+            <div class="ui item" id="csvLoader">
+                <label class="ui header">
+                    Data Selector
+                </label>
+                <div class="ui divider"></div>
+                <input type="file" name="file" id="filesList" class="inputfile" multiple/>
+                <label class="ui fluid button" for="filesList">
+                    <i class="upload icon"></i>Select multiple files
+                </label>
+                <div class="ui segment">
+                    <div id="dataInfoPane">
+                    </div>
+                </div>
+                <div class="ui hidden divider"></div>
+                <div class="ui labeled input">
+                    <div class="ui label">
+                        delimiter
+                    </div>
+                    <input type="text" value=";" size="4" id="delimiter">
+                </div>
+                <div class="ui hidden divider"></div>
+                <div class="ui hidden divider"></div>
+                <div class="ui labeled input">
+                    <div class="ui label">
+                        Lines num
+                    </div>
+                    <input type="text" value='5' size="3" id="linesNum">
+                </div>
+                <div class="ui hidden divider"></div>
+                <div class="ui fluid buttons">
+                    <div class="ui orange button" id="addBt">Add files</div>
+                    <div class="ui blue button" id="submitBt">Submit</div>
+                </div>
+            </div>
+        </div>
+        <div class="pusher">
+            <div class="ui small inverted tabular menu" id="tabMenu">
+                <a class="item" id="sidebarToggle">
+                    CSV Analyser
+                </a>
+                <!-- <a class="item" id="createGraphCaller">
+                    Create Graph
+                </a> -->
+                <a class="item active" data-tab="dataBoard" id="firstTab">Data Board</a>
+                <a class="item" data-tab="orderList">List</a>
+                <a class="item" data-tab="dashBoard">Dash Board</a>
+                <a class="item" href="/graphViewer" target="_blank">Graph</a>
+            </div>
+            <div class="mainBoard">
+                <div class="ui tab active" data-tab="dataBoard">
+                    <div class="ui horizontal segments">
+                        <div class="ui segment" id="infoPane">
+                        </div>
+                        <div class="ui segment" id="steps">
+                            <h4 id="stepInfo"></h4>
+                            <div class="ui hidden divider"></div>
+                            <div class="ui mini buttons" id="graphSaver">
+                                <div class="ui blue button">Save Local</div>
+                                <div class="ui  button">Save Server</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui stackable cards" id="cardsPlace">
+                        
+                    </div>
+                    
+                    <div class="ui menu" id="tabs">
+                        <a class="item" id="modalPara">Filter</a>
+                        <a class="item">Join Table</a>
+                        <a class="item">Add Node</a>
+                        <a class="item">Add Connection</a>
+                        <a class="item">Create Graph</a>
+                        <div class="right menu">
+                            <a class="item">Save Table</a>
+                        </div>
+                    </div>
+                    
+                    <div class="" id="tableSeg">
+                    </div>
+                </div>
+                <div class="ui tab" data-tab="orderList">
+                    <div id="orderList">
+                    </div>
+                </div>
+                <div class="ui tab" data-tab="dashBoard">
+                    <div id="dashBoard">
+                        <div id="labelsZone">
+                        </div>
+                        <div class="ui segment grid">
+                            
+                            <div class="eight wide column" id="tagCloud">
+                            </div>
+                            <div class="eight wide column" id="chart">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                </div>
+            </div>
+            <div class="ui modal" id="propModal">
+                <div class="header">
+                    Restriction
+                </div>
+                <div class="content">
+                    <div class="ui header">
+                        Column Targets:
+                    </div>
+                    <div id="modalLabels">
+                    </div>
+                    <div class="ui segment" id="modalInputSeg">
+                        <div class="ui header">
+                            Input Restriction:
+                        </div>
+                        <div class="ui left action labeled input">
+                            <div class="ui blue label" id="modalTargetLabel">
+                                Column Name
+                            </div>
+                            <select class="ui compact dropdown" id="modalEqual">
+                                <option value="0">=</option>
+                                <option value="1">&lt;</option>
+                                <option value="2">&le;</option>
+                                <option value="3">&gt;</option>
+                                <option value="4">&ge;</option>
+                                <option value="5">&#8800;</option>
+                                <option value="6">has</option>
+                            </select>
+                            <input type="text" id="modalInput">
+                        </div>
+                    </div>
+                </div>
+                <div class="actions">
+                    <div class="ui black deny button">
+                        Cancel
+                    </div>
+                    <div class="ui positive right labeled icon button">
+                        Confirm
+                        <i class="checkmark icon"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <script src="scripts/lib/jquery.min.js"></script>
+        <script src="scripts/lib/semantic.min.js"></script>
+        <script src="scripts/lib/d3.min.js"></script>
+        <script src="scripts/lib/d3.layout.cloud.js"></script>
+        <script src="scripts/src/lpt_view/lpt_util.js"></script>
+        <script src="scripts/src/csvAnalyser/analyserVue.js"></script>
+        <script src="scripts/src/csvAnalyser/analyser.js"></script>
+        <script src="scripts/src/csvAnalyser/analyserIndex.js"></script>
+        <script src="scripts/src/csvAnalyser/csvTable.js"></script>
+        <script src="scripts/src/graphViewer/viewerVue.js"></script>
+        <script src="scripts/src/graphViewer/graphModel.js"></script>
+        <script src="scripts/src/graphViewer/viewerCtl.js"></script>
+        <script src="scripts/lib/sigma/sigma.min.js"></script>
+        <script src="scripts/src/emiNetwork/sigmaGraph.js"></script>
+        <!-- <script src="scripts/src/graphBuilder/graphModel.js"></script> -->
+    </body>
+
+</html>

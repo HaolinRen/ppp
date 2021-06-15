@@ -1,0 +1,119 @@
+body {
+    background-color: #F5F5F5;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+
+#board {
+    margin: 60px 5px 5px 5px;
+}
+
+.shandowBoard {
+    position: absolute;
+    top: 0;
+    margin: 0;
+    z-index: -1;
+}
+
+.right_info {
+    position: absolute;
+    top: 40px;
+    right: 5px;
+    text-align: left;
+    z-index: 99;
+    display: inline-block;
+}
+
+.taTg{
+    position: absolute;
+    margin-left: -40px;
+}
+
+.ableScroll {
+    overflow: scroll;
+}
+
+.selectedInfo {
+    height: 100%;
+    /*border-radius: .28571429rem .28571429rem .28571429rem  .28571429rem;*/
+    /*border: 1px solid rgba(34, 36, 38, .15);*/
+}
+
+.colorBoard {
+    max-height: 500px;
+}
+
+.colorpane {
+    max-height: 200px;
+}
+
+.colorList {
+    max-height: 200px;
+}
+
+.bottomLabelList {
+    max-height: 400px;
+}
+
+.colorlabel {
+    margin: 5px!important
+}
+
+.chartpane {
+    white-space: nowrap;
+    overflow-x: auto;
+    overflow: auto;
+}
+
+.lasso:hover {
+    cursor: move;
+}
+
+.lasso path {
+  stroke: rgb(80,80,80);
+  stroke-width: 1px;
+}
+
+.lasso .drawn {
+  fill-opacity: .05;
+}
+
+.lasso .loop_close {
+  fill: 'none';
+  stroke-dasharray: 4, 4;
+}
+
+.lasso .origin {
+  fill:#3399FF;
+  fill-opacity:.5;
+}
+
+.axis path,
+.axis line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+}
+.area {
+  fill: steelblue;
+  clip-path: url(#clip);
+}
+
+.resize path {
+  fill: #fff;
+  fill-opacity: .6;
+  /*stroke: red;*/
+  stroke-width: 1.5px;
+}
+
+.acArc path {
+  fill: #fff;
+  fill-opacity: .6;
+  stroke: red;
+  stroke-width: 1.5px;
+}
