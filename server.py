@@ -1,12 +1,7 @@
-
 from http.server import HTTPServer, CGIHTTPRequestHandler
-
 from os import curdir, sep
-
 import json
-
-# from server.localData import pathProcess, dataProcess
-
+from server.localData import pathProcess, dataProcess
 
 PORT_NUMBER = 8081
 
@@ -84,19 +79,18 @@ class myHandler(CGIHTTPRequestHandler):
 			pck = pathProcess()
 			if not pck.checkPath(self.path):
 				self.send_error(404, "No exits such path.")
-			elif self.path == '/gflist' or self.path == '/skglist' or self.path == '/csvfile':
+			elif self.path == '/gflist':
 				dp = dataProcess()
 				re = dp.getData(self.path, '')
 				self.send_response(200)
 				self.end_headers()
-				self.wfile.write(json.dumps(re['data']))
-			
+				self.wfile.write(json.dumps(re['data']).encode())
 			else:
-				contentType = self.headers.getheader("Content-type")
-				ctype, pdict = cgi.parse_header(contentType)
-				length = int(self.headers.getheader('content-length'))
+				contentType = self.headers["Content-type"]
+				length = int(self.headers['content-length'])
 				data = self.rfile.read(length)
-				if ctype == "application/json":
+				
+				if contentType == "application/json":
 					dp = dataProcess()
 					re = dp.getData(self.path, data)
 					if re == 'empty':
@@ -106,7 +100,7 @@ class myHandler(CGIHTTPRequestHandler):
 						# self.send_header('Content-type', 'application/json')
 						self.end_headers()
 						try:
-							self.wfile.write(json.dumps(re))
+							self.wfile.write(json.dumps(re).encode())
 						except:
 							self.wfile.write('no data')
 					try:
