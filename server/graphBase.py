@@ -16,20 +16,6 @@ class tlpGraph():
 		self.nodeIndex = {}
 		self.layoutList = tlp.getLayoutAlgorithmPluginsList()
 
-	# def createSgGraph(self):
-	# 	count = 0
-	# 	viewSize = self.graph.getSizeProperty("viewSize")
-	# 	baseSize = tlp.Size(1,1,1)
-	# 	for n in self.data['nodes']:
-	# 		tempNode = self.graph.addNode()
-	# 		self.nodeIndex[count] = tempNode
-	# 		viewSize[tempNode] = baseSize * n['size']
-	# 		count += 1
-	# 	for e in self.data['links']:
-	# 		n1 = self.nodeIndex[e['source']]
-	# 		n2 = self.nodeIndex[e['target']]
-	# 		self.graph.addEdge(n1, n2)
-
 	def getMaxNodeSize(self):
 		maxNodeNum = 1
 		for n in self.data['nodes']:
@@ -114,16 +100,3 @@ class tlpGraph():
 
 		return self.data
 		
-# a = {
-# 	'nodes': [{}, {}, {}, {}, {}, {}],
-# 	'links':[{'source': 0, 'target': 1, 'weight': 1}, {'source': 2, 'target': 1, 'weight': 6}, {'source': 0, 'target': 2, 'weight': 4},
-# 					{'source': 0, 'target': 4, 'weight': 3}, {'source': 0, 'target': 5, 'weight': 2},{'source': 4, 'target': 5, 'weight': 7},
-# 					{'source': 4, 'target': 3, 'weight': 4}, {'source': 3, 'target': 5, 'weight': 5}]
-# 	}
-
-# test = tlpGraph(a)
-# test.createGraph()
-# test.applyLouvain()
-
-# for i in test.data['nodes']:
-# 	print i

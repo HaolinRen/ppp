@@ -137,7 +137,6 @@ graphPaneControl.fn.requestGraphLayout = function(layout, graph, callbackMethod)
 }
 
 graphPaneControl.fn.updateGraph = function(data) {
-
     let graphInfo = this.myGraphModel.showGraph(data);
     this.clearBottomChart();
     this.updateGraphInfo(graphInfo)

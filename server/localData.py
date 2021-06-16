@@ -4,18 +4,9 @@ import json
 import os
 import sys
 
-# from searchAnalyse import searchAnalyse
-# from parAna import participantAnalyse
-# from crimeData import crimeData
-# from reputation import repuAna
-# from chaineGraph import chaineGraph
 from server.graphBase import tlpGraph
-# from fbData import fbData
-# from twitterUser import twUsers
+
 from server.graphFilePM import graphFilePM
-from server.graphBuilder.builder import GraphBuilder
-# from csvAnalyser.jsonToCsv import csvAnalyser
-# from gmlGraph import myGmlGraph
 
 class dataProcess:
     def __init__(self):
@@ -60,7 +51,7 @@ class dataProcess:
 
 class pathProcess:
     def __init__(self):
-        self.pList = ['/data', '/loadgraph', '/gflist']
+        self.pList = ['/data', '/loadgraph', '/gflist', '/glayout']
 
     def checkPath(self, path):
         return path in self.pList

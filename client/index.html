@@ -6,23 +6,25 @@
 	<link rel="stylesheet" type="text/css" href="style/graphPane.css">
 </head>
 <body>
-	<div class="ui top fixed inverted menu">
+	<div class="ui tabluar menu">
 		<a class="item active" data-tab="dashboard">
 			Dashboard
         </a>
-        <a class="item">
+        <a class="item" data-tab="graph">
         	Graph
         </a>
     </div>
 
-    <div id="board">
-        <div class="ui tab atcive" data-tab="dashboard">
-        	dashboard
-        </div>
-        <div class="ui tab" id="graph">
-        	
+    
+    <div class="ui tab active" data-tab="dashboard">
+        <div class="ui segment">
+            Dashboard
         </div>
     </div>
+    <div class="ui tab" id="graph" data-tab='graph'>
+        
+    </div>
+
     <script src="scripts/lib/jquery.min.js"></script>
     <script src="scripts/lib/semantic.min.js"></script>
     <script src="scripts/lib/d3.min.js"></script>

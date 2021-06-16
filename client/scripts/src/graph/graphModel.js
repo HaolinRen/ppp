@@ -128,7 +128,6 @@ GraphModel.fn.bindFilterDoubleClickedNode = function(callback, callback2) {
 }
 
 GraphModel.fn.bindClickMethod = function(callback) {
-    let that = this;
     this.addEventToGraph('clickNode', function(n) {
         if (callback) {
             callback(n.data.node);

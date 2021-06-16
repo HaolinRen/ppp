@@ -12,7 +12,6 @@ graphPane.fn.init = function(ele) {
 	let jEle = $(this.addPaneText())
 	this.paneEle = jEle;
 	ele.append(jEle)
-
 	this.initViusalBoard();
 	this.selector = new selector(this.shandowBoard.get(0), this.width, this.height);
 	this.initEle()
@@ -76,15 +75,12 @@ graphPane.fn.initOption = function() {
 
 graphPane.fn.initViusalBoard = function() {
 	this.visualBoard = this.paneEle.find('.visualBoard');
-	this.width = this.visualBoard.width();
-	this.height = Math.max($(window).height()* 0.8, 640);
+	this.width = $(window).width()
+	this.height = this.width* 0.5;
 	this.visualBoard.width(this.width).height(this.height);
-
 	this.shandowBoard = this.paneEle.find('.shandowBoard')
 	this.shandowBoard.width(this.width).height(this.height);
-
 	this.dimmerPane = this.paneEle.find('.dimmer');
-
 	this.dimmerPane.dimmer({
 		'closable': false
 	})
@@ -229,7 +225,6 @@ graphPane.fn.sidebarAddElements = function (sidebar) {
 
 graphPane.fn.optionPaneInit = function (motherBorad) {
     let myAccordion = new accordionPane();
-    let that = this;
 
     let layoutLeaf = myAccordion.addOneLeaf('Layout');
     this.settingPaneAddLayoutOption(layoutLeaf);
@@ -575,7 +570,6 @@ dropdownPane.prototype.initLocalSort = function(selections, callback) {
 			}
 		}
 	});
-
 };
 
 dropdownPane.prototype.updateOptions = function(selections) {
