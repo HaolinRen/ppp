@@ -1,4 +1,4 @@
-from http.server import HTTPServer, CGIHTTPRequestHandler
+from http.server import HTTPServer, BaseHTTPRequestHandler
 from os import curdir, sep
 import json
 from server.localData import pathProcess, dataProcess
@@ -6,7 +6,7 @@ from server.localData import pathProcess, dataProcess
 PORT_NUMBER = 8081
 
 
-class myHandler(CGIHTTPRequestHandler):
+class myHandler(BaseHTTPRequestHandler):
 	
 	#Handler for the GET requests
 	def do_GET(self):
@@ -88,8 +88,9 @@ class myHandler(CGIHTTPRequestHandler):
 			else:
 				contentType = self.headers["Content-type"]
 				length = int(self.headers['content-length'])
+				print(length)
 				data = self.rfile.read(length)
-				
+				print(len(data))
 				if contentType == "application/json":
 					dp = dataProcess()
 					re = dp.getData(self.path, data)

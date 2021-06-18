@@ -124,7 +124,7 @@ graphPaneControl.fn.requestGraphLayout = function(layout, graph, callbackMethod)
         }
     })
     this.vue.showDimmer('Requesting graph layout...');
-
+    let a = JSON.stringify(req);
     lpt_util.postData(true, '/glayout', JSON.stringify(req), function (data) {
         
         data.nodes.forEach(function (n, i) {
@@ -141,7 +141,6 @@ graphPaneControl.fn.updateGraph = function(data) {
     this.clearBottomChart();
     this.updateGraphInfo(graphInfo)
     this.graphInfo = graphInfo;
-    console.log(graphInfo);
     // this.vue.setGraphInfo(this.myGraphModel.getNodeSum(), this.myGraphModel.getEdgeSum());
 }
 

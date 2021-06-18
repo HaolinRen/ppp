@@ -17,7 +17,6 @@ class dataProcess:
         if path == '/glayout':
             req = json.loads(req)
             re = self.getGraphLayout(req)
-
         elif path == '/savegraph':
             req = json.loads(req)
             myGraphPM = graphFilePM()
